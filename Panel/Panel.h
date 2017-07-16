@@ -4,17 +4,18 @@
 //----------------------------------------------------------------------------------------------------
 
 
-#define _PNL_AT102TN03				              1      	//Toshiba				// AT070TN
-#define _PNL_HSD070IDW1					2
-#define _PNL_TM150XG					       3
-#define _PNL_C070VW01				              4
-#define _PNL_LVDS_LTM12C283				5            //Toshiba
-#define _PNL_LVDS_EDTCB25QAF                        6            //Panasonic
-#define _PNL_LVDS_LP141X7_C1T0                     7            //Philips
-#define _PNL_LVDS_A089SW01                            8           //
+#define _PNL_AT102TN03                              1           //Toshiba               // AT070TN
+#define _PNL_HSD070IDW1                             2
+#define _PNL_TM150XG                                3
+#define _PNL_C070VW01                               4
+#define _PNL_LVDS_LTM12C283                         5           //Toshiba
+#define _PNL_LVDS_EDTCB25QAF                        6           //Panasonic
+#define _PNL_LVDS_LP141X7_C1T0                      7           //Philips
+#define _PNL_LVDS_A089SW01                          8           //
+#define _PNL_LVDS_HV070WSA                          9           //BOE
 
 
-#define _PANEL_TYPE					_PNL_LVDS_A089SW01//_PNL_LVDS_LTM12C283// _PNL_LVDS_LP141X7_C1T0// _PNL_LVDS_LTM12C283// _PNL_LVDS_EDTCB25QAF// _PNL_LVDS_LTM12C283
+#define _PANEL_TYPE                                 _PNL_LVDS_A089SW01
 //-----------------------------------------------------------
 
 #if(_PANEL_TYPE == _PNL_AT102TN03)
@@ -47,5 +48,9 @@
 
 #if(_PANEL_TYPE == _PNL_LVDS_A089SW01)
 #include "Panel\PNL_A089SW01.h"
+#endif
+
+#if(_PANEL_TYPE == _PNL_LVDS_HV070WSA)
+#include "Panel\PNL_HV070WSA.h"
 #endif
 //-----------------------------------------------------------
