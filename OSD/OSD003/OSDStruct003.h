@@ -30,6 +30,7 @@ typedef enum
     _OE_CHG_SOURCE_AV_SV,
     _OE_INPUT_VGA,
     _OE_INPUT_DVI,
+    _OE_INPUT_HDMI,
     _OE_INPUT_S_VIDEO,
     _OE_INPUT_AV,
     _OE_INPUT_TV,

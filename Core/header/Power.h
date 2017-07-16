@@ -174,7 +174,7 @@ extern void CPowerLedSleep(void);
 //--------------------------------------------------
 // Macro of Light Power Up/Down
 //--------------------------------------------------
-#define LIGHTPOWER_UP()                    {bLIGHTPOWER  = _LIGHT_OFF; bLIGHTPOWER_B =_LIGHT_ON;}
-#define LIGHTPOWER_DOWN()              {bLIGHTPOWER  = _LIGHT_ON; bLIGHTPOWER_B =_LIGHT_OFF;}
+#define LIGHTPOWER_UP()                    {bLIGHTPOWER  = _LIGHT_ON; }
+#define LIGHTPOWER_DOWN()              {bLIGHTPOWER  = _LIGHT_OFF;}
 
 

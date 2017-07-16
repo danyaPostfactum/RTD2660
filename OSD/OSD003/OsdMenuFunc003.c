@@ -321,6 +321,8 @@ void DrawSource(void)
     		Textout(sTV);
 	    Gotoxy(COL(22), ROW(2), BYTE_DISPLAY);	
     		Textout(sVGA);	
+        Gotoxy(COL(28), ROW(2), BYTE_DISPLAY);  
+            Textout(sHDMI);	
     if(stSystemData.InputSource == _SOURCE_VIDEO_AV)
 	{
 		Gotoxy(3,2,BYTE_DISPLAY);
@@ -341,6 +343,11 @@ void DrawSource(void)
 		Gotoxy(21,2,BYTE_DISPLAY);
         OutputChar(0x3B);
 	}
+    else if(stSystemData.InputSource == _SOURCE_HDMI)
+    {
+        Gotoxy(27,2,BYTE_DISPLAY);
+        OutputChar(0x3B);
+    }
 }
 //---------------------------------------------------------------------------
 void MenuLRSwapSlect(BYTE ucState)
@@ -511,7 +518,7 @@ void MAdjustSaturation(BYTE ucMode)
     ucOsdEventMsg = _SAVE_EE_HUE_SAT_DATA_MSG;
     OSD_SLIDER(GET_SATURATION());
 }
-
+#if(_VIDEO_TV_SUPPORT)
 //---------------------------------------------------------------------------
 unsigned char NextTVSystem(unsigned char LR)
 {
@@ -596,7 +603,7 @@ void MAdjustChannel(BYTE ucMode)
     ucOsdEventMsg  = _SAVE_EE_TV_DATA_MSG;
 }
 //---------------------------------------------------------------------------
-
+#endif
 //---------------------------------------------------------------------------
 void MAdjustVolume(BYTE ucMode)
 {
@@ -687,7 +694,9 @@ void MAdjustSource(BYTE ucMode)
     else if(ucSourceTemp == _SOURCE_VIDEO_TV)
     		ucSourceTemp = _SOURCE_VGA;	
 	else if(ucSourceTemp == _SOURCE_VGA)
-    		ucSourceTemp = _SOURCE_VIDEO_AV;
+    		ucSourceTemp = _SOURCE_HDMI;
+    else if(ucSourceTemp == _SOURCE_HDMI)
+            ucSourceTemp = _SOURCE_VIDEO_AV;
     	else
     		return;
     }
@@ -807,7 +816,7 @@ void MMenuNoneProc(void)
 		MMenuNoneEnterSubMenu();        
 		ucSourceTemp = stSystemData.InputSource;
 		break;
-    
+#if(_VIDEO_TV_SUPPORT)    
     case _OE_SC_CH_INC:
     case _OE_SC_CH_DEC:
     	if (_GET_INPUT_SOURCE() != _SOURCE_VIDEO_TV)
@@ -816,7 +825,7 @@ void MMenuNoneProc(void)
         COsdDispOsdTimerEvent();
         bDrawMute = 0;
         break;
-
+#endif
 #if(_VGA_SUPPORT)
     case _OE_INPUT_VGA:
         if (_GET_INPUT_SOURCE() != _SOURCE_VGA)
@@ -832,6 +841,16 @@ void MMenuNoneProc(void)
         if (_GET_INPUT_SOURCE() != _SOURCE_DVI)
         {
             _SET_INPUT_SOURCE(_SOURCE_DVI);
+            ChangeSourceReset();
+        } 
+        break;
+#endif
+
+#if(_HDMI_SUPPORT)
+    case _OE_INPUT_HDMI:
+        if (_GET_INPUT_SOURCE() != _SOURCE_HDMI)
+        {
+            _SET_INPUT_SOURCE(_SOURCE_HDMI);
             ChangeSourceReset();
         } 
         break;
@@ -894,6 +913,7 @@ void MMenuNoneProc(void)
 	case _OE_SC_TIMER_CHANGE:				SetSleepTimer();				       break;
        
 
+#if(_VIDEO_TV_SUPPORT)
        case _OE_SC_INPUT_NUM0:
        case _OE_SC_INPUT_NUM1:
        case _OE_SC_INPUT_NUM2:
@@ -930,7 +950,7 @@ void MMenuNoneProc(void)
        	COsdFxEnableOsd();	    
     	       CTvAutoSearch();
     	break;
-		
+#endif		
 	case _OE_SC_MUTE:          
 		CSetMuteState();                
 	break;
@@ -1150,6 +1170,7 @@ void CShowAutoSerachTotal(BYTE ucSearchTotal)
     CShowNumber1(ucSearchTotal, 1);    
 }
 //---------------------------------------------------------------------------
+#if(_VIDEO_TV_SUPPORT)
 void CShowFreq(WORD iFreqN)
 {
     DWORD lFreqTemp = 0;
@@ -1198,5 +1219,5 @@ bit CKeyStopAutoSearch(void)
     return 0;
 }
 //-----------------------------------------------------------------------
-
+#endif
 #endif      //#if(_OSD_TYPE == _OSD003)

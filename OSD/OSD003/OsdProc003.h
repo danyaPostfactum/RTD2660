@@ -9,7 +9,7 @@
 #define _CHANGE_SOURCE_METHOD_0     0
 #define _CHANGE_SOURCE_METHOD_1     1
 
-#define _CHANGE_SOURCE_METHOD       _CHANGE_SOURCE_METHOD_0
+#define _CHANGE_SOURCE_METHOD       _CHANGE_SOURCE_METHOD_1
 
 //---------------------------------------
 // Menu func define

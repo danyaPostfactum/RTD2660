@@ -2,7 +2,7 @@
 
 
 #if(_VIDEO_TV_SUPPORT == _OFF)
-BYTE idata ucTVType             = _NORMAL_TV_TYPE;
+BYTE idata ucTVType             = 0;
 #endif
 
 #if(_VIDEO_TV_SUPPORT)

@@ -484,6 +484,16 @@ void COsdEventMsgProc(void)
             break;
 #endif
 
+#if(_HDMI_SUPPORT)
+        case _OE_INPUT_HDMI:
+            if (_GET_INPUT_SOURCE() != _SOURCE_HDMI)
+            {
+                _SET_INPUT_SOURCE(_SOURCE_HDMI);
+                ChangeSourceReset();
+            } 
+            break;
+#endif
+
 #if(_VIDEO_SV_SUPPORT)
         case _OE_INPUT_S_VIDEO:
             if (_GET_INPUT_SOURCE() != _SOURCE_VIDEO_SV)
@@ -1039,6 +1049,7 @@ void CShowNote(void)
 		case _SOURCE_VIDEO_AV:		pStr = sAV1;		break;
 		case _SOURCE_VIDEO_TV:		pStr = sTV;			break;
 		case _SOURCE_VGA:			pStr = sVGA;			break;
+		case _SOURCE_HDMI:			pStr = sHDMI;		break;
 
 	}
 	
@@ -1269,7 +1280,8 @@ void CChangeSourceAvSv(void)
 		case _SOURCE_VIDEO_AV:		_SET_INPUT_SOURCE(_SOURCE_VIDEO_SV);		break;
 		case _SOURCE_VIDEO_SV:		_SET_INPUT_SOURCE(_SOURCE_VIDEO_TV);		break;
 		case _SOURCE_VIDEO_TV:		_SET_INPUT_SOURCE(_SOURCE_VGA);		break;
-		case _SOURCE_VGA:			_SET_INPUT_SOURCE(_SOURCE_VIDEO_AV);		break;
+		case _SOURCE_VGA:			_SET_INPUT_SOURCE(_SOURCE_HDMI);		break;
+		case _SOURCE_HDMI:			_SET_INPUT_SOURCE(_SOURCE_VIDEO_AV);		break;
 		default: break;
 
 	}

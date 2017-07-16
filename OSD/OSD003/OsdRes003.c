@@ -86,6 +86,7 @@ BYTE code sAV1[] = "AV1";
 BYTE code sAV2[] = "MP5";
 BYTE code sTV[] = "DMB";
 BYTE code sVGA[] = "VGA";
+BYTE code sHDMI[] = "HDMI";
 
 #elif(OEM_TYPE == RTD2660_VGA_AV_MP5)
 BYTE code sAV1[] = "AV1";

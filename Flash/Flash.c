@@ -650,6 +650,7 @@ void CEepromInitialUserFIFOModeData(void)
 	// 初始化 就是写 0xFF 写以不用做这个动做
 }
 //----------------------------------------------------------------------------------------------------
+
 void CSaveTVModeData(BYTE ucChannel)
 {
     BYTE ID = ucChannel + 1;
@@ -666,13 +667,15 @@ void CLoadTVModeData(BYTE ucChannel)
 
  	fRT = FLLoadStruct(ucPage,ID,sizeof(StructTvInformationData), &stTVChannelInfo.TYPE);
 
+#if(_VIDEO_TV_SUPPORT)
     if(fRT == _FAIL)
     {
         stTVChannelInfo.TYPE = _NORMAL_TV_TYPE;
         stTVChannelInfo.Freq = _MIN_FREQ;
     }
-
+#endif
     ucTVType = _GET_CH_COLOR_TYPE();
+
 }
 //----------------------------------------------------------------------------------------------------
 

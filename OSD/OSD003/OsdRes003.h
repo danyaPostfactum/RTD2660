@@ -50,6 +50,7 @@ extern BYTE code sAV1[];
 extern BYTE code sAV2[];
 extern BYTE code sTV[];
 extern BYTE code sVGA[];
+extern BYTE code sHDMI[];
 extern BYTE code sMute[];
 
 extern BYTE code s16_9[];

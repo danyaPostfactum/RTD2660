@@ -335,6 +335,8 @@ void CModeNoSignalEvent(void);
 void CModeNoCableEvent(void);
 void COsdDispOsdTimerEvent(void);
 
+void CAccAdjust (BYTE mode);
+
 void ModeLimit();
 
 #else

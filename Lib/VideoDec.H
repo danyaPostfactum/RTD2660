@@ -20,9 +20,9 @@
 // If you select SV port, we only support
 // V0 with V1 or V1 with V2 or V2 with V3.
 //                                 |    Y input     |  C input   |
-#define _AV_CHANNEL                (_V0_INPUT << 4)
-#define _SV_CHANNEL                (_V1_INPUT << 4)
-#define _TV_CHANNEL                (_V3_INPUT << 4)
+#define _AV_CHANNEL                (_V1_INPUT << 4)
+#define _SV_CHANNEL                (_V2_INPUT << 4)
+#define _TV_CHANNEL                (_V2_INPUT << 4)
 
 
 /*
