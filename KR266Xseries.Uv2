@@ -185,7 +185,7 @@ Options 1,0,0  // Target 'KR266Xseries'
  HexSel=0
  MG32K=0
  TGMORE=0
- RunUsr 0 1 <Output\2660.bat>
+ RunUsr 0 1 <FIRMWARE.BAT>
  RunUsr 1 0 <>
  BrunUsr 0 0 <>
  BrunUsr 1 0 <>

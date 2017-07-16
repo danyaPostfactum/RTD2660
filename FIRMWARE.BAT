@@ -1,0 +1,1 @@
+CreateBin.exe Output\FIRMWARE.BIN Output\KR266Xseries.H00 Output\KR266Xseries.H01 Output\KR266Xseries.H02
